@@ -22,8 +22,8 @@ TLDR; 著者は完全にデータドリブンで外部知識に基礎を置くNe
       - 自動的な評価ではベースラインに比べBLEUスコアが大きく向上している
       - 人による評価ではベースラインと提案手法についてどちらがより「適切か」と「情報に富んでいるか」の2点を7段階で判断している
       - 人による評価では「適切か」についてベースラインと提案手法に殆ど差異は見れなかった(実際には提案手法の方が若干評価が低い)
-      - 人による評価では「情報に飛んでいるか」についてベースラインに比べ提案手法のほうが評価が高かった
-      - 人による評価では「情報に飛んでいるか」についてベースラインに比べ提案手法の亜種であるautoencoderのタスクでも評価がより高かった
+      - 人による評価では「情報に富んでいるか」についてベースラインに比べ提案手法のほうが評価が高かった
+      - 人による評価では「情報に富んでいるか」についてベースラインに比べ提案手法の亜種であるautoencoderのタスクでも評価がより高かった
     - 生成された文のサンプル(抜粋)
       - A: Just had an awesome dinner at [...] Great recommendation [...]
       - B: One of my favorite places I’ve ever been to in NYC. The food is great and the service is lackluster.
@@ -35,4 +35,5 @@ TLDR; 著者は完全にデータドリブンで外部知識に基礎を置くNe
 
 **** 参考
 
-    - Jiwei Li, Michel Galley, Chris Brockett, Jianfeng Gao, and Bill Dolan. 2016a. A diversity-promoting ob- jective function for neural conversation models. In Proc. of NAACL-HLT. [[[https://arxiv.org/abs/1510.03055][arXiv]]]
+    - Ghazvininejad, Marjan, et al. "A Knowledge-Grounded Neural Conversation Model." arXiv preprint arXiv:1702.01932 (2017).
+    - Li, Jiwei, et al. "A diversity-promoting objective function for neural conversation models." arXiv preprint arXiv:1510.03055 (2015). [[[https://arxiv.org/abs/1510.03055][arXiv]]]
