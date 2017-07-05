@@ -1,0 +1,38 @@
+* [[https://arxiv.org/abs/1702.01932][A Knowledge-Grounded Neural Conversation Model]]
+
+TLDR; 著者は完全にデータドリブンで外部知識に基礎を置くNeural conversational modelを提案している。これまでのデータドリブンなNeural conversational modelは、それが学習データ中に含まれていない可能性が多分にあるため入力であるユーザ発話中のエンティティをめったに含まない発話文を生成する傾向にある。対象的に伝統的な対話システムはスロットフィリングを用いてエンティティやこれに基づく事実を発話文に挿入できるが、実装コストが高いためにスケールするのが困難である。著者はこれらの利点を組み合わせたモデルを提案している。本手法ではまず、ユーザ発話をRNN encoderを用いて固定長のベクトルとする。得られたベクトルに基づいて予め用意した事実(非会話データ)をMemory networkを用いてベクトル化して重み付けする。最後に、ユーザ発話から得られた固定長のベクトルと事実のベクトルを足し合わせたものをRNN decoderの入力として最終発話を生成する。著者らはTwitterの3-turn会話データと、非会話データとしてFoursquareから取得した店舗のコメント(tips)を用いてモデルを評価している。提案手法ではベースラインであるSEQ2SEQと比較してよりユーザの求める情報に富んだ発話が生成された。
+
+**** Key Points
+
+    - Problem: 会話データのみに基づくデータドリブンなNeural conversational modelは入力であるユーザ発話中のエンティティに基づいた意見や事実情報をうまく用いることができず、情報に乏しい発話を生成する傾向にある
+    - Goal: 会話データに加えて非会話データ(FoursquareやWikipedianの情報など)を用いて発話文を生成するデータドリブンなNeural conversational modelを構築する
+    - キーアイデア: 発話文を対話の履歴だけでなく現在の文脈に関連のある外部の事実に基いて条件付ける
+    - 様々な領域に適用可能: 著者はモデルの評価のためにFoursquareのデータを用いているが、提案手法はFoursquareのデータに依らず一般的なものである
+    - multi-task learning: 学習時は1) 純粋な会話タスク、モデルは対話の履歴から発話を予測する、と2)対話の履歴と事実から発話を予測するの2つのタスクからなっている
+      - multi-task learningの設定にすることで、1)のモデルをpre-trainしてからmulti-task learningを開始するという選択肢が取れる
+      - 2)の亜種として、対話の履歴と事実から事実の方を予測するautoencoderに類似したタスクについても検討している
+    - Memory network: 予め用意した事実をユーザ発話への関連度に応じて重み付けするためにMemory networkを用いる
+    - データセット:
+      - 非会話データ: Foursquareから取得した1.1Mのチップス、これらはTwitterのhandleを含むものに制限している
+      - 会話データ: Twitterから取得した3-turnの23Mの会話の内、Foursquareのデータに含まれたhandleを含む会話1M
+    - 目的関数:
+      - ベースライン(Li et al., 2016)に合わせるために目的関数は、ユーザ発話(と事実)を与えられた上での発話文の尤度に加えて、発話文を与えられた上でのユーザ発話の尤度も足し合わせている
+    - 評価:
+      - 自動的な評価ではcorpus-levelのBLEUを用いている、これは人による評価との相関がsentence-levelのBLEUより高いとされているから
+      - 自動的な評価ではベースラインに比べBLEUスコアが大きく向上している
+      - 人による評価ではベースラインと提案手法についてどちらがより「適切か」と「情報に富んでいるか」の2点を7段階で判断している
+      - 人による評価では「適切か」についてベースラインと提案手法に殆ど差異は見れなかった(実際には提案手法の方が若干評価が低い)
+      - 人による評価では「情報に飛んでいるか」についてベースラインに比べ提案手法のほうが評価が高かった
+      - 人による評価では「情報に飛んでいるか」についてベースラインに比べ提案手法の亜種であるautoencoderのタスクでも評価がより高かった
+    - 生成された文のサンプル(抜粋)
+      - A: Just had an awesome dinner at [...] Great recommendation [...]
+      - B: One of my favorite places I’ve ever been to in NYC. The food is great and the service is lackluster.
+
+**** Thoughts
+
+    - 実際に生成された文のサンプルを見ると、通常のSEQ2SEQよりユーザ発話に依った発話が得られているように見える
+    - 著者は提案手法のrecommendationやQAシステムへの適用の可能性を示唆しているが、そこまでのクオリティにするのは難しそうに思える
+
+**** 参考
+
+    - Jiwei Li, Michel Galley, Chris Brockett, Jianfeng Gao, and Bill Dolan. 2016a. A diversity-promoting ob- jective function for neural conversation models. In Proc. of NAACL-HLT. [[[https://arxiv.org/abs/1510.03055][arXiv]]]
