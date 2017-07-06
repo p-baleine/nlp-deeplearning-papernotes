@@ -1,3 +1,10 @@
+**** 2017-03055
+- [[notes/end-to-end-task-completion-neural-dialogue-systems.org][End-to-End Task-Completion Neural Dialogue Systems]] [[[https://arxiv.org/abs/1703.01008][arXiv]]]
+
 **** 2017-02
 
 - [[notes/knowledge-grounded-neural-conversation-model.org][A Knowledge-Grounded Neural Conversation Model]] [[[https://arxiv.org/abs/1702.01932][arXiv]]]
+
+**** 2015-11
+
+- A Diversity-Promoting Objective Function for Neural Conversation Models [[[https://arxiv.org/abs/1510.03055][arXiv]]]
