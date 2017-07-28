@@ -13,3 +13,7 @@
 **** 2015-09
 
 - [[./notes/effective-approches-to-attention-based-neural-machine-translation.ipynb][Effective Approaches to Attention-based Neural Machine Translation]] [[[https://arxiv.org/abs/1508.04025][arXiv]]]
+
+**** 2014-05
+
+- [[./notes/auto-encoding-variational-bayes.ipynb][Auto-Encoding Variational Bayes]] [[[https://arxiv.org/abs/1312.6114][arXiv]]]
