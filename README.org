@@ -1,3 +1,7 @@
+**** 2017-07
+
+- [[./notes/controlling-linguistic-style-aspects-in-neural-language-generation.ipynb][Controlling Linguistic Style Aspects in Neural Language Generation]] [[[https://arxiv.org/abs/1707.02633][arXiv]]]
+
 **** 2017-03
 
 - [[notes/end-to-end-task-completion-neural-dialogue-systems.org][End-to-End Task-Completion Neural Dialogue Systems]] [[[https://arxiv.org/abs/1703.01008][arXiv]]]
